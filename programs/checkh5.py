@@ -5,6 +5,8 @@ Simple HDF5 file inspector:
 - Print all datasets inside the file
 - For each dataset, show shape and dtype
 - Print first N and last N rows of data (default: 3)
+
+To specify your data path, change the data path of yours in line 42
 """
 
 import h5py
@@ -37,7 +39,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--filename",
         type=str,
-        default=r"E:\Footsole\footPressureSensor\programs\sensor_left_2025-09-04-19-18-38.h5",
+        default=r"Your_File_Path",
         help="Path to HDF5 file (default: your .h5 file)"
     )
     parser.add_argument(

@@ -1,4 +1,13 @@
 #!/usr/bin/env python3
+
+"""
+Recording 60 seconds (Default)
+Usage:
+python log_velostat_sensor_h5_BLE_test.py --name FootSole-C3
+python log_velostat_sensor_h5_BLE.py --name FootSole-C3
+
+"""
+
 import asyncio
 import h5py
 import numpy as np
