@@ -139,12 +139,19 @@ ax0.axis('off')  # Hide axes
 # Plotting the time series in ax1
 ax1.plot(timestamps1, np.mean(sensor_values1, axis=1), label=label1)
 ax1.set_title('Average Pressure Over Time')
-ax1.set_xlabel('UTC Time')
+ax1.set_xlabel('Time')
 ax1.set_ylabel('Average Pressure (kPa)')
+
+
 locator = mdates.AutoDateLocator(minticks=3, maxticks=7)
-formatter = mdates.ConciseDateFormatter(locator)
+formatter = mdates.DateFormatter('%H:%M:%S')
 ax1.xaxis.set_major_locator(locator)
 ax1.xaxis.set_major_formatter(formatter)
+
+
+date_str = timestamps1[0].strftime('%Y-%m-%d')
+ax1.text(0.02, 0.02, f'Date: {date_str}', transform=ax1.transAxes, 
+         fontsize=10, bbox=dict(boxstyle="round,pad=0.3", facecolor="white", alpha=0.8))
 # ax1.set_xlim([min(timestamps1[0], timestamps2[0]), max(timestamps1[-1], timestamps2[-1])])
 ax1.grid(True)
 ax1.legend()
@@ -206,7 +213,9 @@ formatter.set_scientific(False)
 cbar.ax.yaxis.set_major_formatter(formatter)
 
 # Create a directory to store frames
-output_dir = 'frames/nrshoes_stone2'
+# 根据输入文件名生成输出目录名
+h5_filename = os.path.splitext(os.path.basename(args.hdf5_path1))[0]
+output_dir = f'frames/{h5_filename}'
 if not os.path.exists(output_dir):
     os.makedirs(output_dir)
 

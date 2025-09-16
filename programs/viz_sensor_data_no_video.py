@@ -15,6 +15,7 @@ Notes:
 import argparse
 from datetime import datetime
 from pathlib import Path
+import os
 
 import h5py
 import numpy as np
@@ -154,6 +155,12 @@ def create_visualization():
     ax_time.set_ylim(top=8)
     ax_time.grid(True, alpha=0.3)
     ax_time.legend()
+    
+    # Add date label in bottom left
+    date_str = timestamps[0].strftime('%Y-%m-%d')
+    ax_time.text(0.02, 0.02, f'Date: {date_str}', transform=ax_time.transAxes, 
+                 fontsize=10, bbox=dict(boxstyle="round,pad=0.3", facecolor="white", alpha=0.8))
+    
     vline = ax_time.axvline(timestamps[0], color='red', linewidth=2, alpha=0.8)
 
     # ---- Right panel: sensor distribution ----
@@ -208,6 +215,21 @@ def animate_visualization():
 
     print(f"[INFO] Detected side: {side}")
     print(f"Frames: {total_frames} | Interval: {interval} ms")
+
+    # 生成帧文件
+    h5_filename = os.path.splitext(os.path.basename(args.hdf5_path))[0]
+    output_dir = f'frames/{h5_filename}'
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+    
+    print(f"Generating frames to: {output_dir}")
+    for i in range(total_frames):
+        update_frame(i)
+        plt.savefig(os.path.join(output_dir, f'frame_{i:04d}.png'), dpi=200)
+        if i % 10 == 0:
+            print(f"Generated frame {i+1}/{total_frames}")
+    
+    print(f"Frame generation complete! Saved to {output_dir}")
 
     ani = FuncAnimation(fig, update_frame, frames=total_frames,
                         interval=interval, blit=False, repeat=True)

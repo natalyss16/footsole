@@ -135,6 +135,9 @@ class InteractiveFramePlayer:
         total_size = 0
         compression_stats = {'high': 0, 'medium': 0, 'low': 0}
         
+        print(f"Total images: {len(self.frames)}")
+        print(f"Compressing images to: {images_dir}")
+        
         for i, frame in enumerate(self.frames):
             # smart choose compression level
             if i % 10 == 0:  # save 1 high quality frame every 10 frames
@@ -195,7 +198,7 @@ class InteractiveFramePlayer:
             frame_files.append(frame_filename)
             
             if i % 20 == 0:
-                print(f"progress: {i+1}/{len(self.frames)}, current frame size: {file_size/1024:.1f}KB, quality: {quality}%")
+                print(f"Compressing image {i+1}/{len(self.frames)}, current frame size: {file_size/1024:.1f}KB, quality: {quality}%")
         
         # generate HTML content (using external image links)
         html_content = self.generate_compressed_html_content(frame_files)
@@ -420,6 +423,50 @@ class InteractiveFramePlayer:
 
 # usage
 if __name__ == "__main__":
-    player = InteractiveFramePlayer('frames/nrshoes_stone2')
-    fig = player.create_interactive_interface()
-    plt.show()
+    import sys
+    
+    # 检查命令行参数
+    if len(sys.argv) > 1:
+        # 从命令行参数获取H5文件路径
+        h5_file_path = sys.argv[1]
+        # 使用与viz_generate_frames.py相同的逻辑生成文件夹名
+        h5_filename = os.path.splitext(os.path.basename(h5_file_path))[0]
+        frames_dir = f'frames/{h5_filename}'
+        
+        if os.path.exists(frames_dir):
+            print(f"Loading frames from: {frames_dir}")
+            player = InteractiveFramePlayer(frames_dir)
+            fig = player.create_interactive_interface()
+            plt.show()
+        else:
+            print(f"Frames directory not found: {frames_dir}")
+            print("Please run viz_generate_frames.py or viz_sensor_data_no_video.py first")
+    else:
+        # 如果没有参数，自动检测frames目录下的子文件夹
+        frames_base_dir = 'frames'
+        if os.path.exists(frames_base_dir):
+            # 查找所有包含PNG文件的子文件夹
+            subdirs = []
+            for item in os.listdir(frames_base_dir):
+                item_path = os.path.join(frames_base_dir, item)
+                if os.path.isdir(item_path):
+                    # 检查是否包含PNG文件
+                    png_files = [f for f in os.listdir(item_path) if f.endswith('.png')]
+                    if png_files:
+                        subdirs.append(item)
+            
+            if subdirs:
+                # 使用最新的文件夹（按修改时间排序）
+                subdirs.sort(key=lambda x: os.path.getmtime(os.path.join(frames_base_dir, x)), reverse=True)
+                selected_dir = subdirs[0]
+                frames_dir = os.path.join(frames_base_dir, selected_dir)
+                print(f"Auto-detected frames directory: {frames_dir}")
+                player = InteractiveFramePlayer(frames_dir)
+                fig = player.create_interactive_interface()
+                plt.show()
+            else:
+                print("No frame directories found in 'frames' folder")
+                print("Please run viz_generate_frames.py or viz_sensor_data_no_video.py first")
+        else:
+            print("'frames' directory not found")
+            print("Please run viz_generate_frames.py or viz_sensor_data_no_video.py first")
