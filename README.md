@@ -48,7 +48,7 @@ This project uses pressure sensors embedded in insoles. An ESP32 sends data via 
 
 ## Repository Structure
 
-<img src="images/file_structure.png" alt="File Structure" width="600">
+<img src="images/file_structure.png" alt="File Structure" width="400">
 
 * `config/` — sensor position CSV files (left/right).
 * `data/` — general data folder (optional scratch space).
@@ -135,7 +135,7 @@ python viz_sensor_data_no_video.py ../data_h5/sensor_right_YYYY-MM-DD-HH-MM-SS.h
 
 ## Typical Workflow (Step by Step)
 
-<img src="images/workflow.png" alt="Workflow" width="700">
+<img src="images/workflow.png" alt="Workflow" width="400">
 
 1. Charge the insole → **green LED blinks**.
 2. Enable **Bluetooth** on your computer.
