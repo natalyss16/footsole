@@ -2,7 +2,6 @@
 
 This project uses pressure sensors embedded in insoles. An ESP32 sends data via **BLE (Bluetooth Low Energy)** to a computer. Python scripts record the data into `.h5` files and provide visualization.
 
-
 ---
 
 ## Table of Contents
@@ -49,7 +48,7 @@ This project uses pressure sensors embedded in insoles. An ESP32 sends data via 
 
 ## Repository Structure
 
-![File Structure](images/file_structure.png)
+<img src="images/file_structure.png" alt="File Structure" width="600">
 
 * `config/` — sensor position CSV files (left/right).
 * `data/` — general data folder (optional scratch space).
@@ -59,7 +58,7 @@ This project uses pressure sensors embedded in insoles. An ESP32 sends data via 
 * `programs/` — main Python scripts for logging/visualization.
 * `README.md` — this documentation.
 * `build_sql.ipynb` — Jupyter notebook for database build/utilities.
-* `footsole.sqlite` — SQLite database file (optional).
+* `footsole.sqlite` — SQLite database file.
 * `requirements.txt` — Python dependency list.
 
 > Tip: Run scripts **from the `programs/` folder** so relative paths to `config/` and `images/` resolve correctly.
@@ -86,10 +85,11 @@ All scripts are located in `programs/`.
 
 ```bash
 # Right foot, 60 seconds with visualization
-python combined_sensor_logger_viz.py --name FootSole-C3 --duration 60
+python combined_sensor_logger_viz.py (Using default configuration)
+python combined_sensor_logger_viz.py --name FootSole-C3 --duration 60 (For personal configuration)
 
 # Left foot, 30 seconds, no visualization
-python combined_sensor_logger_viz.py --name FootSole-C3 --left --duration 30 --no-viz
+python combined_sensor_logger_viz.py --name FootSole-C3 --left --duration 30 --no-viz (For personal configuration)
 ```
 
 ### `foot_sole_ble_visualizer.py`
@@ -99,6 +99,7 @@ python combined_sensor_logger_viz.py --name FootSole-C3 --left --duration 30 --n
 **Examples**
 
 ```bash
+python foot_sole_ble_visualizer.py (Using default configuration)
 python foot_sole_ble_visualizer.py --name FootSole-C3 --duration 60
 python foot_sole_ble_visualizer.py --name FootSole-C3 --left --duration 30 --no-display
 ```
@@ -134,7 +135,7 @@ python viz_sensor_data_no_video.py ../data_h5/sensor_right_YYYY-MM-DD-HH-MM-SS.h
 
 ## Typical Workflow (Step by Step)
 
-![Workflow](images/workflow.png)
+<img src="images/workflow.png" alt="Workflow" width="700">
 
 1. Charge the insole → **green LED blinks**.
 2. Enable **Bluetooth** on your computer.
