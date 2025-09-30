@@ -57,7 +57,6 @@ This project uses pressure sensors embedded in insoles. An ESP32 sends data via 
 * `images/` — background images used for visualization.
 * `programs/` — main Python scripts for logging/visualization.
 * `README.md` — this documentation.
-* `build_sql.ipynb` — Jupyter notebook for database build/utilities.
 * `footsole.sqlite` — SQLite database file.
 * `requirements.txt` — Python dependency list.
 
