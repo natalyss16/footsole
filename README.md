@@ -125,6 +125,10 @@ python log_velostat_sensor_h5_BLE.py --name FootSole-C3 --left --duration 30
 python viz_sensor_data_no_video.py ../data_h5/sensor_right_YYYY-MM-DD-HH-MM-SS.h5 --side right
 ```
 
+### `build_sql.py`
+
+* Tranform `.h5` files to `.csv` and build a database that consists of tables and views. Database schema is available here: https://drawsql.app/teams/tum-12/diagrams/footsole.
+
 ### Utilities
 
 * `checkh5.py` — inspect `.h5` structure and preview rows.
@@ -167,6 +171,11 @@ python viz_sensor_data_no_video.py ../data_h5/sensor_right_YYYY-MM-DD-HH-MM-SS.h
 
     * `timestamp_ns`: nanoseconds since epoch
     * `s1..s208`: sensor channel values
+
+* **CSV structure**
+
+  * Transformed hierarchical HDF5 files to table format
+  * Same content as HDF5 files
 
 ---
 
