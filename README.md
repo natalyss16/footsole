@@ -190,13 +190,9 @@ And data collected by second year iteration by our team:
   * `sensor_left_2025-3points_shoe+sole_try2_sensor_left`
   * `sensor_left_2025-3points_shoe+sole_try3_sensor_left`
 
-* **File names**
-
-  * `sensor_right_YYYY-MM-DD-HH-MM-SS.h5`
-  * `sensor_left_YYYY-MM-DD-HH-MM-SS.h5`
 * **HDF5 structure**
 
-  * Top-level dataset: `sensor_right` or `sensor_left`
+  * Top-level dataset on different grounds
   * Each row: `[timestamp_ns, s1, s2, …, s208]`
 
     * `timestamp_ns`: nanoseconds since epoch
