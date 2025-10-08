@@ -1,5 +1,13 @@
 # Foot Sole Sensor
 
+> **Note Before You Begin**
+>
+> Before you start reading how to use our sensor, please note that this project is developed based on the original **wired version** of the footsole pressure sensor project.  
+> The original repository can be found here: [https://github.com/weichkai/footPressureSensor.git](https://github.com/weichkai/footPressureSensor.git).  
+> 
+> This work has been carried out **with authorization and permission** from the original project owner (Kai), and we have further optimized and extended the project.
+
+
 This project uses pressure sensors embedded in insoles. An ESP32 sends data via **BLE (Bluetooth Low Energy)** to a computer. Python scripts record the data into `.h5` files and provide visualization.
 
 ---
