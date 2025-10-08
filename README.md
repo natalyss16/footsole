@@ -168,27 +168,27 @@ python viz_sensor_data_no_video.py ../data_h5/sensor_right_YYYY-MM-DD-HH-MM-SS.h
 ## Data Files
 This repository contains data from first iteration done by Kai and team:
 
-fullsoul_left_stone1_sensor_left
-fullsoul_left_stone2_sensor_left
-fullsoul_left_wiese0_sensor_left
-fullsoul_left_wiese1_sensor_left
-fullsoul_left_wiese_onlyfront_sensor_left
-fullsoul_left_wood1_sensor_left
-nrshoes_left_onlyfront_sensor_left
-nrshoes_left_stone1_sensor_left
-nrshoes_left_stone2_sensor_left
-nrshoes_left_wiese1_sensor_left
-nrshoes_left_wiese2_sensor_left
-nrshoes_left_wood1_sensor_left
+  * `fullsoul_left_stone1_sensor_left`
+  * `fullsoul_left_stone2_sensor_left`
+  * `fullsoul_left_wiese0_sensor_left`
+  * `fullsoul_left_wiese1_sensor_left`
+  * `fullsoul_left_wiese_onlyfront_sensor_left`
+  * `fullsoul_left_wood1_sensor_left`
+  * `nrshoes_left_onlyfront_sensor_left`
+  * `nrshoes_left_stone1_sensor_left`
+  * `nrshoes_left_stone2_sensor_left`
+  * `nrshoes_left_wiese1_sensor_left`
+  * `nrshoes_left_wiese2_sensor_left`
+  * `nrshoes_left_wood1_sensor_left`
 
 And data collected by second year iteration by our team:
 
-sensor_left_2025-3points_barefoot+sole_try1_sensor_left
-sensor_left_2025-3points_barefoot+sole_try2_sensor_left
-sensor_left_2025-3points_barefoot+sole_try3_sensor_left
-sensor_left_2025-3points_shoe+sole_try1_sensor_left
-sensor_left_2025-3points_shoe+sole_try2_sensor_left
-sensor_left_2025-3points_shoe+sole_try3_sensor_left
+  * `sensor_left_2025-3points_barefoot+sole_try1_sensor_left`
+  * `sensor_left_2025-3points_barefoot+sole_try2_sensor_left`
+  * `sensor_left_2025-3points_barefoot+sole_try3_sensor_left`
+  * `sensor_left_2025-3points_shoe+sole_try1_sensor_left`
+  * `sensor_left_2025-3points_shoe+sole_try2_sensor_left`
+  * `sensor_left_2025-3points_shoe+sole_try3_sensor_left`
 
 * **File names**
 
