@@ -1,27 +1,86 @@
 # Foot Sole Sensor
 
-> **Note Before You Begin**
+> **Project Origin and Attribution**
 >
-> Before you start reading how to use our sensor, please note that this project is developed based on the original **wired version** of the footsole pressure sensor project.  
-> The original repository can be found here: [https://github.com/weichkai/footPressureSensor.git](https://github.com/weichkai/footPressureSensor.git).  
-> 
-> This work has been carried out **with authorization and permission** from the original project owner (Kai), and we have further optimized and extended the project.
-
-
-This project uses pressure sensors embedded in insoles. An ESP32 sends data via **BLE (Bluetooth Low Energy)** to a computer. Python scripts record the data into `.h5` files and provide visualization.
+> This repository represents a new and independent continuation of the **Foot Sole Pressure Sensing Device** project originally developed by **Kai Burian, Chutong Ren, and Arved Strauch** at the **Technical University of Munich**, as part of the *Clinical Applications of Computational Medicine (CACOM)* course, July 30, 2024.  
+>
+> **Reference:**  
+> Burian, K., Ren, C., & Strauch, A. (2024, July 30). *Foot Sole Pressure Sensing Device and Its Usage in Barefoot Shoes: Fullsoul Runningpad.* Clinical Applications of Computational Medicine (CACOM), Technical University of Munich.  
+>
+> **Original repository:** [https://github.com/weichkai/footPressureSensor](https://github.com/weichkai/footPressureSensor)
+>
+> This project **was not forked or cloned** from the original repository but **rebuilt from scratch**, based on the same experimental concept, and carried out **with permission from the original authors**.  
+> All reused methods, scripts, and figures are properly cited as per academic integrity requirements.  
+>
+> The primary extensions in this version are:
+> - Integration of **Bluetooth Low Energy (BLE)** for wireless data transmission  
+> - Addition of an **SQLite database** for structured data storage and querying
 
 ---
 
+## Abstract
+
+This project extends the original wired *Fullsoul* insole pressure sensor system by adding **Bluetooth Low Energy (BLE)** communication and **SQLite database integration**.  
+An **ESP32-C3** microcontroller collects data from 208 Velostat-based pressure sensors and transmits them via BLE to a host computer.  
+Python scripts record and store the data both as `.h5` files and in an SQLite database for post-processing and analysis.  
+The visualization pipeline and sensor layout follow the structure established by Burian et al. (2024).
+
+---
+
+## Prior Work vs. This Work (Software)
+
+| **Burian et al. (2024)** | **This Project (2025)** |
+|---------------------------|--------------------------|
+| Wired Velostat sensor array inside Fullsoul shoe | Wireless BLE communication using ESP32-C3 |
+| Data transfer via USB-C serial connection | Real-time BLE transmission (UART bridge) |
+| Data stored only as `.h5` files | Added **SQLite database** for structured queries |
+| Python visualization pipeline | Visualization pipeline reused with minimal modification |
+
+---
+
+## Change Log (Software)
+
+- 🔹 **BLE Integration:** replaced wired USB connection with wireless Bluetooth Low Energy communication  
+- 🔹 **Database Integration:** added `build_sql.py` to convert `.h5` data into an **SQLite database** with queryable tables and views  
+  
+---
+
+
+## Reused Components (from Burian et al., 2024)
+
+To maintain **project completeness**, **backward compatibility**, and facilitate **future forks**, several components from the original repository were intentionally preserved:
+
+* **`config/`** — retains the original **sensor position CSV files** for left and right insoles.
+* **`images/`** — includes the original **background images** for left and right foot visualizations.
+* **`programs/`** — preserves the following original scripts for reference and potential reuse:
+
+  * `log_velostat_sensor_h5.py`
+  * `index_find.py`
+  * `velostat_sensor_to_pressure.py`
+  * `viz_generate_frames.py`
+  * `frames_to_video.py`
+
+These five scripts were kept unmodified to ensure that users can reproduce or compare the wired workflow of the original project.
+All BLE-related and database-related scripts in this repository are **newly developed** and independent, except that the function
+`velostat_sensor_to_pressure()` from the original codebase was reused within our new BLE workflow.
+
+---
+
+
 ## Table of Contents
 - [Hardware Setup](#hardware-setup)
-- [UART Communication (used in this project)](#uart-communication-used-in-this-project)
+- [UART Communication](#uart-communication)
 - [Software Setup](#software-setup)
 - [Repository Structure](#repository-structure)
+- [Reused Components (from Burian et al., 2024)](#reused-components-from-burian-et-al-2024)
 - [Scripts Overview](#scripts-overview)
-- [Typical Workflow (Step by Step)](#typical-workflow-step-by-step)
+- [Typical Workflow](#typical-workflow)
 - [Data Files](#data-files)
-- [BLE Logic (Simplified)](#ble-logic-simplified)
+- [BLE Logic](#ble-logic)
 - [FAQ](#faq)
+- [Acknowledgment](#acknowledgment)
+- [License](#license)
+
 
 ---
 
@@ -239,3 +298,18 @@ And data collected by second year iteration by our team:
 
 * Use a smaller `--duration` (e.g., 30 s).
 * Avoid `--save-frames` unless necessary.
+
+---
+
+## Acknowledgment
+
+We gratefully acknowledge **Kai Burian, Chutong Ren, and Arved Strauch** for their foundational work on the wired *Fullsoul* pressure sensing project (*Burian et al., 2024*), which provided the methodological and conceptual basis for this BLE + database extension.
+
+---
+
+## License
+
+This repository is provided for educational and research purposes.
+Reproduction or redistribution must retain full attribution to both the original and current authors.
+
+---
