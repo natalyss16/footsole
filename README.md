@@ -193,6 +193,9 @@ python viz_sensor_data_no_video.py ../data_h5/sensor_right_YYYY-MM-DD-HH-MM-SS.h
 
 * Tranform `.h5` files to `.csv` and build a database that consists of tables and views. Database schema is available here: https://drawsql.app/teams/tum-12/diagrams/footsole.
 
+### `interactive visualizer.py`
+* Interactive Foot Pressure Sensor Data visualization Tool. Supports user upload of H5 data files and video files, with different visualization modes.
+
 ### Utilities
 
 * `checkh5.py` — inspect `.h5` structure and preview rows.
