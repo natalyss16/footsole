@@ -35,6 +35,8 @@ The visualization pipeline and sensor layout follow the structure established by
 | Data transfer via USB-C serial connection | Real-time BLE transmission (UART bridge) |
 | Data stored only as `.h5` files | Added **SQLite database** for structured queries |
 | Python visualization pipeline | Visualization pipeline reused with minimal modification |
+| Video only with .mp4 file | Added HTML version file |
+| Run all the scripts and generate video | Automatically generate video with a data processor interface |
 
 ---
 
