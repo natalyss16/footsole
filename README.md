@@ -115,8 +115,6 @@ All BLE-related and database-related scripts in this repository are **newly deve
 
 ## Repository Structure
 
-<img src="images/file_structure.png" alt="File Structure" width="400">
-
 * `config/` — sensor position CSV files (left/right).
 * `data/` — general data folder (optional scratch space).
 * `data_csv/` — exported sensor data in CSV format.
@@ -203,9 +201,7 @@ python viz_sensor_data_no_video.py ../data_h5/sensor_right_YYYY-MM-DD-HH-MM-SS.h
 
 ---
 
-## Typical Workflow (Step by Step)
-
-<img src="images/workflow.png" alt="Workflow" width="400">
+## Typical Workflow 
 
 1. Charge the insole → **green LED blinks**.
 2. Enable **Bluetooth** on your computer.
