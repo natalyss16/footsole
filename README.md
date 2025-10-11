@@ -33,7 +33,7 @@ The visualization pipeline and sensor layout follow the structure established by
 |---------------------------|--------------------------|
 | Wired Velostat sensor array inside Fullsoul shoe | Wireless BLE communication using ESP32-C3 |
 | Data transfer via USB-C serial connection | Real-time BLE transmission (UART bridge) |
-| Data stored only as `.h5` files | Added **SQLite database** for structured queries |
+| Data stored only as `.h5` files | Transformed data to CSV & added **SQLite database** for structured queries |
 | Python visualization pipeline | Visualization pipeline reused with minimal modification |
 | Video only with .mp4 file | Added video file with HTML version |
 | Run all the scripts and generate video | Automatically generate video with a data processor interface |
